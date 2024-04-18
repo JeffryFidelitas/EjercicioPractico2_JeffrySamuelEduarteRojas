@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"> 
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Hoteleria</title>
+    </head>
+    <body>
+        <section th:fragment="listadoHoteles" class="py-4 mb-4 bg-light">
+            <div th:if="${hoteles != null and !hoteles.empty}">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center">[[#{hotel.nombre}]]</th>
+                            <th class="text-center">[[#{producto.ubicacion}]]</th>
+                            <th class="text-center">[[#{producto.descripcion}]]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="hotel, contador : ${hoteles}">
+                            <td class="text-center">[[${contador.count}]]</td>
+                            <td class="fs-6">[[${hotel.nombre}]]</td>
+                            <td class="text-end">[[${hotel.ubicacion}]]</td>
+                            <td class="text-center">[[${hotel.descripcion}]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </body>
+</html>
